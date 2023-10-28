@@ -12,6 +12,7 @@ class ScoreboardTest() {
 
         val match = scoreboard.createMatch("Germany", "Spain")
 
+        assertEquals(1, match.id)
         assertEquals(0, match.homeScore)
         assertEquals(0, match.awayScore)
         assertEquals(1, scoreboard.getMatches().size)

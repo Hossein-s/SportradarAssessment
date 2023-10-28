@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 class Scoreboard {
     private val matches = LinkedHashMap<Int, Match>()
     private var counter = 0
-    private val nextId = { counter++ }
+    private val nextId = { ++counter }
 
     fun createMatch(homeTeam: String, awayTeam: String): MatchOutput {
         val id = nextId()
