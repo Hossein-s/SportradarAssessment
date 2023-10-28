@@ -19,7 +19,8 @@ class Scoreboard {
     }
 
     fun getMatch(id: Int): MatchOutput {
-        return matches[id]?.let { MatchOutput.fromMatch(it) } ?: throw IllegalArgumentException("Invalid match id")
+        return matches[id]?.let { MatchOutput.fromMatch(it) }
+            ?: throw IllegalArgumentException("Invalid match id")
     }
 
     fun updateMatch(id: Int, homeScore: Int, awayScore: Int): MatchOutput {

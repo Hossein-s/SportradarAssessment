@@ -14,13 +14,18 @@ class ScoreboardController(private val scoreBoard: Scoreboard) {
         return scoreBoard.createMatch(match.homeTeam, match.awayTeam)
     }
 
-    @PatchMapping(":id")
-    fun updateMatch(@RequestParam id: Int, @RequestBody update: UpdateMatchInput) {
-        scoreBoard.updateMatch(id, update.homeScore, update.awayScore)
+    @GetMapping("{id}")
+    fun getMatch(@PathVariable id: Int): MatchOutput {
+        return scoreBoard.getMatch(id)
     }
 
-    @DeleteMapping(":id")
-    fun finishMatch(@RequestParam id: Int) {
+    @PatchMapping("{id}")
+    fun updateMatch(@PathVariable id: Int, @RequestBody update: UpdateMatchInput): MatchOutput {
+        return scoreBoard.updateMatch(id, update.homeScore, update.awayScore)
+    }
+
+    @DeleteMapping("{id}")
+    fun finishMatch(@PathVariable id: Int) {
         scoreBoard.finishMatch(id)
     }
 
