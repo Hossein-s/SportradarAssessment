@@ -22,10 +22,10 @@ class ScoreBoardTest() {
         val scoreBoard = ScoreBoard()
         val match = scoreBoard.createMatch("Germany", "Spain")
 
-        scoreBoard.updateMatch(match.id, 3, 3)
+        val updated = scoreBoard.updateMatch(match.id, 3, 3)
 
-        assertEquals(3, match.homeScore)
-        assertEquals(3, match.awayScore)
+        assertEquals(3, updated.homeScore)
+        assertEquals(3, updated.awayScore)
     }
 
     @Test
@@ -50,19 +50,19 @@ class ScoreBoardTest() {
     @Test
     fun `should return summary in descending order`() {
         val scoreBoard = ScoreBoard()
-        val match1 = scoreBoard.createMatch("Germany", "Spain")
-        val match2 = scoreBoard.createMatch("Portugal", "Croatia")
-        val match3 = scoreBoard.createMatch("France", "Italy")
-        val match4 = scoreBoard.createMatch("Argentina", "Brazil")
-        val match5 = scoreBoard.createMatch("Netherlands", "England")
+        val m1 = scoreBoard.createMatch("Germany", "Spain")
+        val m2 = scoreBoard.createMatch("Portugal", "Croatia")
+        val m3 = scoreBoard.createMatch("France", "Italy")
+        val m4 = scoreBoard.createMatch("Argentina", "Brazil")
+        val m5 = scoreBoard.createMatch("Netherlands", "England")
 
-        scoreBoard.updateMatch(match1.id, 3, 2)
-        scoreBoard.updateMatch(match2.id, 4, 3)
-        scoreBoard.updateMatch(match3.id, 1, 4)
-        scoreBoard.updateMatch(match4.id, 5, 0)
-        scoreBoard.updateMatch(match5.id, 2, 1)
+        val mu1 = scoreBoard.updateMatch(m1.id, 3, 2)
+        val mu2 = scoreBoard.updateMatch(m2.id, 4, 3)
+        val mu3 = scoreBoard.updateMatch(m3.id, 1, 4)
+        val mu4 = scoreBoard.updateMatch(m4.id, 5, 0)
+        val mu5 = scoreBoard.updateMatch(m5.id, 2, 1)
 
-        val expected = arrayOf(match2, match4, match3, match1, match5)
+        val expected = arrayOf(mu2, mu4, mu3, mu1, mu5)
 
         assert(
             scoreBoard.getMatches().withIndex().all { (id, match) ->
