@@ -3,12 +3,12 @@ package dev.hosi.sportradarservice
 import dev.hosi.sportradarservice.dtos.CreateMatchInput
 import dev.hosi.sportradarservice.dtos.MatchOutput
 import dev.hosi.sportradarservice.dtos.UpdateMatchInput
-import dev.hosi.sportradarservice.models.ScoreBoard
+import dev.hosi.sportradarservice.models.Scoreboard
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("matches")
-class ScoreBoardController(private val scoreBoard: ScoreBoard) {
+class ScoreboardController(private val scoreBoard: Scoreboard) {
     @PostMapping
     fun createMatch(@RequestBody match: CreateMatchInput): MatchOutput {
         return scoreBoard.createMatch(match.homeTeam, match.awayTeam)

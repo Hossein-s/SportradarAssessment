@@ -4,7 +4,7 @@ import dev.hosi.sportradarservice.dtos.MatchOutput
 import org.springframework.stereotype.Component
 
 @Component
-class ScoreBoard {
+class Scoreboard {
     private val matches = LinkedHashMap<Int, Match>()
     private var counter = 0
     private val nextId = { counter++ }
